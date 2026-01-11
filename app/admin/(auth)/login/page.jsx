@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CONFIG from "../../../constance";
 
 export default function AuthPage() {
   const router = useRouter();
@@ -13,8 +14,10 @@ export default function AuthPage() {
 
   const handleSubmit = async () => {
     const url = isLogin
-      ? "http://localhost:5000/api/users/login"
-      : "http://localhost:5000/api/users/register";
+      // ? "http://localhost:5000/api/users/login"
+      // : "http://localhost:5000/api/users/register";
+      ? `${CONFIG.API_BASE_URL}/users/login`
+      : `${CONFIG.API_BASE_URL}/users/register`;
 
     const payload = isLogin
       ? { phone, password }

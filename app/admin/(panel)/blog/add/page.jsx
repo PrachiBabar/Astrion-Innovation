@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CONFIG from "../../../../constance";
 // import Image from "next/image";
 
 export default function AddBlog() {
@@ -57,7 +58,7 @@ export default function AddBlog() {
       formData.append("read_time", readTime || "5 min read");
       if (imageFile) formData.append("image", imageFile);
 
-      const res = await fetch("http://localhost:5000/api/blog", {
+      const res = await fetch(`${CONFIG.API_BASE_URL}/blog`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

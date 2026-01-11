@@ -7,7 +7,7 @@ export default function Footer(){
                     <h3 className="text-2xl font-bold gradient-text mb-4">Astrion_Innovation</h3>
                     <p className="text-gray-400 mb-4">Transforming digital visions into reality with innovative solutions and cutting-edge technology.</p>
                     <div className="flex gap-4">
-                        <a href="https://instagram.com/astrioninnovation" target="_blank"
+                        <a href="https://www.instagram.com/astrion_innovation/" target="_blank"
                             className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-teal-500/20 transition text-gray-500 dark:text-gray-100">
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 

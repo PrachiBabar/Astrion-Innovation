@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=5015 next dev ",
+    "dev": "cross-env  PORT=5015 next dev ",
     "build": "next build",
-    "start": "PORT=5015 next start",
+    "start": "cross-env  PORT=5015 next start",
     "lint": "eslint"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.23",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
     "postcss": "^8.5.6",

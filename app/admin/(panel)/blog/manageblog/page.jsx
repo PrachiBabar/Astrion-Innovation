@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
+import CONFIG from "../../../../constance";
 
 
 export default function ManageBlogs() {
@@ -19,7 +20,7 @@ export default function ManageBlogs() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/blog", {
+      const res = await fetch(`${CONFIG.API_BASE_URL}/blog`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -34,7 +35,7 @@ export default function ManageBlogs() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this blog?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/blog/${id}`, {
+      const res = await fetch(`${CONFIG.API_BASE_URL}/blog/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -116,7 +117,7 @@ export default function ManageBlogs() {
       {/* Image */}
       {viewBlog.image && (
         <Image
-          src={`http://localhost:5000${viewBlog.image}`}
+          src={`${CONFIG.API_BASE_URL}${viewBlog.image}`}
           alt={viewBlog.title}
           width={400}
           height={300}

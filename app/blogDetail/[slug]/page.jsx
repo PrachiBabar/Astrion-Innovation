@@ -237,6 +237,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import CONFIG from "../../constance";
 
 export default function BlogDetailPage() {
   const { slug } = useParams();
@@ -248,7 +249,7 @@ export default function BlogDetailPage() {
 
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/blog/slug/${slug}`);
+        const res = await fetch(`${CONFIG.API_BASE_URL}/blog/slug/${slug}`);
         if (!res.ok) throw new Error("Blog not found");
 
         const data = await res.json();
@@ -269,7 +270,7 @@ export default function BlogDetailPage() {
   if (img.startsWith("data:image")) return img; // base64
   if (img.startsWith("http")) return img; // external URL
   // local uploads
-  return `http://localhost:5000/uploads/${img.split("/").pop()}`;
+  return `${CONFIG.API_BASE_URL}/${img.split("/").pop()}`;
 };
 
 

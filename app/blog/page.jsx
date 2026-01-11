@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, Search, ArrowRight, TrendingUp, SearchIcon } from "lucide-react";
+import CONFIG from "../constance";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
@@ -17,7 +18,7 @@ export default function BlogPage() {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("http://localhost:5000/api/blog", {
+        const res = await fetch(`${CONFIG.API_BASE_URL}/blog`, {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
           cache: "no-store",
         });
@@ -48,7 +49,7 @@ export default function BlogPage() {
   const getImage = (image) => {
     if (!image) return "/placeholder.jpg";
     if (image.startsWith("http")) return image;
-    return `http://localhost:5000/uploads/${image.split("/").pop()}`;
+    return `${CONFIG.API_BASE_URL}/uploads/${image.split("/").pop()}`;
   };
 
   if (loading) {

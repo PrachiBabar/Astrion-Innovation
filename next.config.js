@@ -26,11 +26,11 @@ const nextConfig = {
     return [
       {
         source: "/admin/api/blog",
-        destination: "http://69.62.84.113:5001/api/blog",
+        destination: "https://api.astrioninnovation.com/api/blog",
       },
       {
         source: "/admin/api/:path*",
-        destination: "http://69.62.84.113:5001/api/blog/:path*",
+        destination: "https://api.astrioninnovation.com/api/blog/:path*",
       },
     ];
   },

@@ -1,146 +1,248 @@
 'use client';
 
-import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Monitor, Smartphone, Tablet } from 'lucide-react';
+import { X, ExternalLink, Github, Monitor, Smartphone, Tablet, Maximize2, Code2, Sparkles } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeScreen, setActiveScreen] = useState(0);
-//   const [isDark, setIsDark] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const scrollRef = useRef(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const projects = [
     {
       id: 1,
-      title: "Online Courses",
+      title: "Fitness Trainer",
       category: "Web Application",
       role: "Full Stack Developer",
       description: "Enterprise financial management platform with real-time analytics and AI-powered insights.",
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      thumbnail: "productsui/fitnesshero.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Next.js", "TypeScript", "PostgreSQL"],
+      tags: ["React.js", "Tailwind Css", "MySQL"],
+      mainColor: "#14b8a6",
       screens: [
-        { name: "Dashboard", type: "desktop", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop" },
-        { name: "Analytics", type: "desktop", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop" },
-        { name: "Mobile App", type: "mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop" },
-        { name: "Reports", type: "tablet", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" }
+        { name: "Dashboard", type: "desktop", image: "productsui/fitnesssection.png" },
+        { name: "Analytics", type: "desktop", image: "productsui/fitness4.png" },
+        { name: "Mobile App", type: "mobile", image: "productsui/fitnessmobile.png" },
+        { name: "Workouts", type: "tablet", image: "productsui/fitness3.png" }
       ]
     },
     {
       id: 2,
       title: "Cake Shop",
-      category: "Mobile & Web",
+      category: "E-commerce",
       role: "Lead Developer",
-      description: "Healthcare platform connecting patients with doctors through seamless video consultations.",
+      description: "Sweet delights delivered with a modern storefront and seamless shopping experience.",
       thumbnail: "productsui/cakes.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["React Native", "Node.js"],
+      tags: ["React.js", "Node.js", "Tailwind css" , "MySQL"],
+      mainColor: "#d4af37",
       screens: [
-        { name: "Hero Section", type: "desktop", image: "productsui/cakehero.png" },
+        { name: "Hero", type: "desktop", image: "productsui/cakehero.png" },
         { name: "Home", type: "mobile", image: "productsui/heromobile.png" },
-        { name: "Consultation", type: "desktop", image: "productsui/chooseus.png" },
-        { name: "Profile", type: "mobile", image: "productsui/cakemobile.png" }
+        { name: "Products", type: "desktop", image: "productsui/chooseus.png" },
+        { name: "Mobile", type: "mobile", image: "productsui/cakemobile.png" }
       ]
     },
     {
       id: 3,
       title: "Organic Store",
-      category: "Data Visualization",
+      category: "E-commerce",
       role: "Frontend Architect",
-      description: "Environmental monitoring system with real-time data visualization and predictive analytics.",
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      description: "Fresh organic products delivered with sustainable shopping experience.",
+      thumbnail: "productsui/organichero.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Vue.js", "D3.js", "Python"],
+      tags: ["React.js", "Node.js", "Tailwind css" , "MySQL"],
+      mainColor: "#10b981",
       screens: [
-        { name: "Overview", type: "desktop", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop" },
-        { name: "Maps", type: "desktop", image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=800&fit=crop" }
+        { name: "Overview", type: "desktop", image: "productsui/organichero.png" },
+        { name: "Cards", type: "desktop", image: "productsui/organic2.png" },
+        { name: "Products", type: "desktop", image: "productsui/organic3.png" },
+        { name: "Mobile", type: "mobile", image: "productsui/organicmobile2.png" },
+        { name: "Contact", type: "mobile", image: "productsui/organicmobile1.png" }
       ]
     },
     {
       id: 4,
       title: "Property Showcase",
-      category: "E-commerce Platform",
+      category: "Real Estate",
       role: "Full Stack Developer",
-      description: "Modern e-commerce platform with AI-powered recommendations and seamless checkout experience.",
-      thumbnail: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+      description: "Modern real estate platform with virtual tours and smart property search.",
+      thumbnail: "productsui/propertyhero.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Next.js", "Stripe", "MongoDB"],
+      tags: ["React.js", "Node.js", "Tailwind css" , "MySQL"],
+      mainColor: "#3b82f6",
       screens: [
-        { name: "Store", type: "desktop", image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&h=800&fit=crop" },
-        { name: "Product", type: "desktop", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=800&fit=crop" },
-        { name: "Mobile", type: "mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop" }
+        { name: "Hero", type: "desktop", image: "productsui/propertyhero.png" },
+        { name: "Details", type: "desktop", image: "productsui/propertycards.png" },
+        { name: "Contact", type: "mobile", image: "productsui/propertymobile1.png" },
+        { name: "Contact", type: "mobile", image: "productsui/propertymobile2.png" },
+        { name: "Details", type: "desktop", image: "productsui/propertycards2.png" },
+        { name: "Contact", type: "mobile", image: "productsui/propertymobile3.png" }
+
       ]
     },
     {
       id: 5,
       title: "Travel Agency",
-      category: "E-commerce Platform",
+      category: "Travel & Tourism",
       role: "Full Stack Developer",
-      description: "Modern e-commerce platform with AI-powered recommendations and seamless checkout experience.",
-      thumbnail: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+      description: "Discover destinations worldwide with personalized travel planning and booking.",
+      thumbnail: "productsui/travelhero.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Next.js", "Stripe", "MongoDB"],
+      tags: ["React.js", "Node.js", "Tailwind css" , "MySQL"],
+      mainColor: "#06b6d4",
       screens: [
-        { name: "Store", type: "desktop", image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&h=800&fit=crop" },
-        { name: "Product", type: "desktop", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=800&fit=crop" },
-        { name: "Mobile", type: "mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop" }
+        { name: "Destinations", type: "desktop", image: "productsui/travelhero.png" },
+        { name: "Booking", type: "desktop", image: "productsui/Travelcards.png" },
+        { name: "Booking", type: "desktop", image: "productsui/Travelcontact.png" },
+        { name: "Travel", type: "mobile", image: "productsui/Travelmobile.png" },
+        { name: "Booking", type: "mobile", image: "productsui/Travelmobile2.png" },
       ]
     },
     {
       id: 6,
-      title: "Fitness Trainer",
-      category: "E-commerce Platform",
+      title: "Online Courses",
+      category: "Health & Fitness",
       role: "Full Stack Developer",
-      description: "Modern e-commerce platform with AI-powered recommendations and seamless checkout experience.",
-      thumbnail: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+      description: "Personal training platform with workout plans and progress tracking.",
+      thumbnail: "productsui/onlinehero.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Next.js", "Stripe", "MongoDB"],
+      tags: ["Next.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#ef4444",
       screens: [
-        { name: "Store", type: "desktop", image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&h=800&fit=crop" },
-        { name: "Product", type: "desktop", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=800&fit=crop" },
-        { name: "Mobile", type: "mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop" }
+        { name: "Dashboard", type: "desktop", image: "productsui/onlinehero.png" },
+        { name: "Workouts", type: "desktop", image: "productsui/onlinecards.png" },
+        { name: "Workouts", type: "desktop", image: "productsui/onlinecontact.png" },
+        { name: "Workouts", type: "mobile", image: "productsui/onlinemobile.png" },
+        { name: "Workouts", type: "mobile", image: "productsui/onlinemobile2.png" },
+
       ]
     },
     {
       id: 7,
       title: "Fashion Brand",
-      category: "E-commerce Platform",
-      role: "Full Stack Developer",
-      description: "Modern e-commerce platform with AI-powered recommendations and seamless checkout experience.",
-      thumbnail: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+      category: "E-commerce",
+      role: "Frontend Developer",
+      description: "Luxury fashion platform with AR try-on and personalized styling.",
+      thumbnail: "productsui/fashionhero.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Next.js", "Stripe", "MongoDB"],
+      tags: ["React.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#8b5cf6",
       screens: [
-        { name: "Store", type: "desktop", image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&h=800&fit=crop" },
-        { name: "Product", type: "desktop", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=800&fit=crop" },
-        { name: "Mobile", type: "mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop" }
+        { name: "Collection", type: "desktop", image: "productsui/fashionhero.png" },
+        { name: "Product", type: "desktop", image: "productsui/fashionsection.png" },
+        { name: "Product", type: "desktop", image: "productsui/fashioncards.png" },
+        { name: "Product", type: "desktop", image: "productsui/fashionsec.png" },
+        { name: "Product", type: "mobile", image: "productsui/fashionmobile.png" },
+        { name: "Product", type: "mobile", image: "productsui/fashionmobile2.png" }
+
+
+      ]
+    },
+    {
+      id: 8,
+      title: "CRM Dashboard",
+      category: "CRM Dashboard",
+      role: "Frontend Developer",
+      description: "Luxury fashion platform with AR try-on and personalized styling.",
+      thumbnail: "productsui/crm.png",
+      live: "https://example.com",
+      github: "https://github.com",
+      tags: ["React.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#8b5cf6",
+      screens: [
+        { name: "Dashboard", type: "desktop", image: "productsui/crm .png" },
+        { name: "Product", type: "mobile", image: "productsui/crmmob.png" },
+        { name: "Product", type: "mobile", image: "productsui/crmmob2.png" },
+        { name: "Product", type: "mobile", image: "productsui/crmmob3.png" }
+
       ]
     },
       {
-      id: 8,
-      title: "CRM Dashboard",
-      category: "E-commerce Platform",
-      role: "Full Stack Developer",
-      description: "Modern e-commerce platform with AI-powered recommendations and seamless checkout experience.",
-      thumbnail: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+      id: 9,
+      title: "Analytics Dashboard",
+      category: "Analytics Dashboard",
+      role: "Frontend Developer",
+      description: "Luxury fashion platform with AR try-on and personalized styling.",
+      thumbnail: "productsui/analytic1.png",
       live: "https://example.com",
       github: "https://github.com",
-      tags: ["Next.js", "Stripe", "MongoDB"],
+      tags: ["React.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#8b5cf6",
       screens: [
-        { name: "Store", type: "desktop", image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&h=800&fit=crop" },
-        { name: "Product", type: "desktop", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=800&fit=crop" },
-        { name: "Mobile", type: "mobile", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop" }
+        { name: "Dashboard", type: "desktop", image: "productsui/analytic1.png" },
+        { name: "Product", type: "desktop", image: "productsui/analytic2.png" },
+        { name: "Product", type: "mobile", image: "productsui/analyticmob1.png" },
+        { name: "Product", type: "mobile", image: "productsui/analyticmob2.png" },
+        { name: "Product", type: "mobile", image: "productsui/analyticmob3.png" }
       ]
-    }
-
+    },
+     {
+      id: 10,
+      title: "Premium Store front",
+      category: "Premium Store front",
+      role: "Frontend Developer",
+      description: "Luxury fashion platform with AR try-on and personalized styling.",
+      thumbnail: "productsui/preminumhero.png",
+      live: "https://example.com",
+      github: "https://github.com",
+      tags: ["React.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#8b5cf6",
+      screens: [
+        { name: "Dashboard", type: "desktop", image: "productsui/preminumhero.png" },
+        { name: "Product", type: "desktop", image: "productsui/premiumcards.png" },
+        { name: "Product", type: "desktop", image: "productsui/premiumcart.png" },
+        { name: "Product", type: "mobile", image: "productsui/premiummob1.png" },
+        { name: "Product", type: "mobile", image: "productsui/premiumcartmob.png" },
+      ]
+    },
+     {
+      id: 11,
+      title: "Kanban Board",
+      category: "Kanban Board",
+      role: "Frontend Developer",
+      description: "Luxury fashion platform with AR try-on and personalized styling.",
+      thumbnail: "productsui/board.png",
+      live: "https://example.com",
+      github: "https://github.com",
+      tags: ["React.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#8b5cf6",
+      screens: [
+        { name: "Dashboard", type: "desktop", image: "productsui/board.png" },
+        { name: "Product", type: "desktop", image: "productsui/boarddark.png" },
+        { name: "Product", type: "mobile", image: "productsui/boardmob.png" },
+        { name: "Product", type: "mobile", image: "productsui/boardmob2.png" },
+      ]
+    },
+     {
+      id: 12,
+      title: "Food",
+      category: "Food",
+      role: "Frontend Developer",
+      description: "Luxury fashion platform with AR try-on and personalized styling.",
+      thumbnail: "productsui/foodcard.png",
+      live: "https://example.com",
+      github: "https://github.com",
+      tags: ["React.js", "Tailwind css", "Node.js", "Express.js", "MySQL"],
+      mainColor: "#8b5cf6",
+      screens: [
+        { name: "Dashboard", type: "desktop", image: "productsui/foodhero.png" },
+        { name: "Product", type: "desktop", image: "productsui/foodcard.png" },
+        { name: "Product", type: "desktop", image: "productsui/foodprice.png" },
+        { name: "Product", type: "desktop", image: "productsui/foodcart.png" },
+        { name: "Product", type: "mobile", image: "productsui/foodmob.png" },
+        { name: "Product", type: "mobile", image: "productsui/foodmobcard.png" },
+        { name: "Product", type: "mobile", image: "productsui/foodmobcart.png" },
+      ]
+    },
   ];
 
   useEffect(() => {
@@ -165,76 +267,23 @@ const Portfolio = () => {
     }, 300);
   };
 
-  const nextScreen = () => {
-    if (selectedProject) {
-      setActiveScreen((prev) => (prev + 1) % selectedProject.screens.length);
-    }
-  };
-
-  const prevScreen = () => {
-    if (selectedProject) {
-      setActiveScreen((prev) => (prev - 1 + selectedProject.screens.length) % selectedProject.screens.length);
-    }
-  };
-
-  const getDeviceFrame = (type, image) => {
-    const baseClasses = "relative overflow-hidden transition-transform duration-500";
-    
-    if (type === 'mobile') {
-      return (
-        <div className={`${baseClasses} w-[390px] h-[600px]  rounded-[2.5rem] border-[12px] border-gray-800 bg-gray-900 shadow-2xl`}>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-b-3xl z-10"></div>
-          <img src={image} alt="Screen" className="w-full h-full object-cover" />
-        </div>
-      );
-    } else if (type === 'tablet') {
-      return (
-        <div className={`${baseClasses} w-[500px] h-[670px] rounded-3xl border-[16px] border-gray-800 bg-gray-900 shadow-2xl`}>
-          <img src={image} alt="Screen" className="w-full h-full object-cover rounded-xl" />
-        </div>
-      );
-    } else {
-      return (
-        <div className={`${baseClasses} w-full max-w-[900px] rounded-2xl border-[10px] border-gray-800 bg-gray-900 shadow-2xl`}>
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-          </div>
-          <img src={image} alt="Screen" className="w-full h-[550px] object-cover rounded-lg mt-8" />
-        </div>
-      );
-    }
-  };
-
   return (
-    <div className={`min-h-screen text-white dark:text-gray-900 transition-colors duration-500`}
-        //  style={{
-        //    background: isDark 
-        //      ? 'linear-gradient(135deg, #0a192f, #112240)' 
-        //      : 'linear-gradient(135deg, #f8fafc, #e2e8f0)'
-        //  }}
-         >
+    <div className="min-h-screen text-white transition-colors duration-500 relative overflow-hidden">
       
-      {/* Theme Toggle */}
-      {/* <button
-        onClick={() => setIsDark(!isDark)}
-        className="fixed top-6 right-6 z-50 px-4 py-2 rounded-full backdrop-blur-xl border transition-all duration-300 hover:scale-110"
-        style={{
-          background: isDark 
-            ? 'rgba(255, 255, 255, 0.1)' 
-            : 'rgba(0, 0, 0, 0.1)',
-          borderColor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
-        }}>
-        <span className={isDark ? 'text-white' : 'text-gray-900'}>
-          {isDark ? '☀️' : '🌙'}
-        </span>
-      </button> */}
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      </div>
 
       {/* Header */}
-      <div className="glass-strong container blog-bg mx-auto px-6 pt-24 pb-12">
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className={`text-5xl md:text-7xl font-bold mb-6 text-white dark:text-gray-900}`}
+      <div className="relative container mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 animate-bounce-slow">
+            <Sparkles className="w-4 h-4 text-teal-400" />
+            <span className="text-sm gradient-text font-medium">Premium Portfolio Collection</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white px-2"
               style={{
                 background: 'linear-gradient(135deg, #14b8a6, #d4af37)',
                 WebkitBackgroundClip: 'text',
@@ -243,87 +292,147 @@ const Portfolio = () => {
               }}>
             Featured Projects
           </h1>
-          <p className={`text-xl text-gray-400 dark:text-white max-w-2xl mx-auto`}>
-            Explore my latest work showcasing innovative solutions and creative designs
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 dark:text-white max-w-2xl mx-auto px-4">
+            Immersive showcase of innovative digital experiences
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {/* Innovative Project Showcase Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {projects.map((project, idx) => (
             <div
               key={project.id}
+              onMouseEnter={() => setHoveredCard(project.id)}
+              onMouseLeave={() => setHoveredCard(null)}
               onClick={() => openProject(project)}
-              className="group cursor-pointer glass-strong relative rounded-3xl p-1 transition-all duration-500 hover:scale-[1.02]"
+              className="group cursor-pointer relative overflow-hidden rounded-3xl transition-all duration-700 hover:scale-[1.02]"
               style={{
-                // background: 'linear-gradient(135deg, #14b8a6, #d4af37)',
                 animationDelay: `${idx * 100}ms`
               }}>
-              <div 
-                className="relative rounded-[1.4rem] overflow-hidden backdrop-blur-xl  transition-all duration-500"
-                // style={{
-                //   background: isDark 
-                //     ? 'rgba(17, 34, 64, 0.8)' 
-                //     : 'rgba(255, 255, 255, 0.9)',
-                //   borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                // }}
-                >
+              
+              {/* Gradient Border Effect */}
+              <div className="absolute inset-0 rounded-3xl p-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                   style={{
+                     background: `linear-gradient(135deg, ${project.mainColor}, #d4af37)`
+                   }}>
+                <div className="w-full h-full rounded-3xl glass-strong"></div>
+              </div>
+
+              <div className="relative glass-strong rounded-3xl overflow-hidden border border-white/10">
                 
-                {/* Image Container */}
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={project.thumbnail} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Screenshot Preview Section */}
+                <div className="relative h-[400px] sm:h-[450px] overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
                   
-                  {/* Floating Badge */}
-                  <div className="absolute top-4 right-4 px-4 py-2 rounded-full backdrop-blur-xl border border-white/20 text-white text-sm font-medium">
-                    {project.category}
+                  {/* Main Screenshot with Perspective */}
+                  <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <div className="relative w-full h-full perspective-1000">
+                      
+                      {/* Desktop Screenshot */}
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[70%] transition-all duration-700 transform group-hover:scale-105 group-hover:-translate-x-2"
+                           style={{
+                             transform: hoveredCard === project.id ? 'rotateY(-5deg) translateX(-10px)' : 'rotateY(0deg)',
+                             transformStyle: 'preserve-3d'
+                           }}>
+                        <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-gray-700 bg-gray-900">
+                          <div className="flex items-center gap-2 px-3 py-2 bg-gray-800 border-b border-gray-700">
+                            <div className="flex gap-1.5">
+                              <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                              <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                            </div>
+                          </div>
+                          <img 
+                            src={project.screens[0]?.image} 
+                            alt={project.title}
+                            className="w-full h-48 object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Mobile Screenshot - Floating */}
+                      {project.screens.find(s => s.type === 'mobile') && (
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 w-[35%] transition-all duration-700 transform group-hover:scale-110 group-hover:translate-y-[-55%]"
+                             style={{
+                               transform: hoveredCard === project.id ? 'rotateY(5deg) translateY(-55%) translateX(5px)' : 'rotateY(0deg) translateY(-50%)',
+                               transformStyle: 'preserve-3d',
+                               zIndex: 10
+                             }}>
+                          <div className="rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-gray-800 bg-gray-900">
+                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-4 bg-gray-900 rounded-b-2xl z-10"></div>
+                            <img 
+                              src={project.screens.find(s => s.type === 'mobile')?.image} 
+                              alt="Mobile view"
+                              className="w-full h-64 object-cover"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
+
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                  
+                  {/* Floating Category Badge */}
+                  <div className="absolute top-4 right-4 z-20">
+                    <div className="px-4 py-2 rounded-full glass-strong border border-white/20 backdrop-blur-xl">
+                      <span className="text-xs sm:text-sm font-medium gradient-text">{project.category}</span>
+                    </div>
+                  </div>
+
+                  {/* Screen Count Indicator */}
+                  {/* <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-2 rounded-full glass-strong border border-white/20">
+                    <Monitor className="w-4 h-4 text-teal-400" />
+                    <span className="text-xs font-medium text-gray-300">{project.screens.length} Views</span>
+                  </div> */}
                 </div>
 
-                {/* Content */}
-                <div className="p-8">
-                  <h3 className={`text-2xl font-bold mb-2 text-white dark:text-gray-200 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-yellow-500 transition-all duration-300`}>
-                    {project.title}
-                  </h3>
-                  {/* ${isDark ? 'text-teal-400' : 'text-teal-600'} */}
-                  <p className={`text-sm mb-4 font-medium gradient-text`}>
-                    {project.role}
-                  </p>
-                  <p className={`text-white dark:text-gray-300 mb-6 line-clamp-2`}>
-                    {project.description}
-                  </p>
+                {/* Content Section */}
+                <div className="relative p-6 sm:p-8">
+                  
+                  {/* Project Title & Info */}
+                  <div className="mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-white dark:text-gray-200 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-yellow-500 transition-all duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm font-medium gradient-text mb-3">
+                      {project.role}
+                    </p>
+                    <p className="text-sm text-gray-400 dark:text-gray-300 line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
 
-                  {/* Tags */}
+                  {/* Tech Stack Pills */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag, i) => (
                       <span 
                         key={i}
-                        className={`px-3 py-1 rounded-full text-white text-xs font-medium backdrop-blur-xl border border-gray-100 transition-all duration-300 group-hover:scale-110`}
-                        // style={{
-                        //   background: isDark 
-                        //     ? 'rgba(20, 184, 166, 0.1)' 
-                        //     : 'rgba(20, 184, 166, 0.2)',
-                        //   borderColor: isDark ? 'rgba(20, 184, 166, 0.3)' : 'rgba(20, 184, 166, 0.4)',
-                        //   color: isDark ? '#5eead4' : '#0d9488'
-                        // }}
-                        >
+                        className="px-3 py-1.5 rounded-lg glass text-xs font-medium text-teal-300 border border-teal-500/20 transition-all duration-300 hover:scale-105 hover:border-teal-500/50">
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* View Project Button */}
-                  <button className="w-full py-3 rounded-xl font-medium transition-all duration-300 group-hover:shadow-lg group-hover:shadow-teal-500/50"
-                          style={{
-                            background: 'linear-gradient(135deg, #14b8a6, #d4af37)',
-                            color: 'white'
-                          }}>
-                    View Project Details
-                  </button>
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openProject(project);
+                      }}
+                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/30"
+                      style={{
+                        background: `linear-gradient(135deg, ${project.mainColor}, #d4af37)`,
+                        color: 'white'
+                      }}>
+                      <Maximize2 className="w-4 h-4" />
+                      Full Preview
+                    </button>
+                    <button className="px-4 py-3 rounded-xl glass-strong border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105">
+                      <Code2 className="w-5 h-5 text-teal-400" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -331,66 +440,57 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Project Detail Modal */}
+      {/* Enhanced Full Screen Modal */}
       {selectedProject && (
         <div 
-          className={` fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
+          className={`fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 transition-all duration-500 ${
             isModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
           style={{
-            background: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(10px)'
+            background: 'rgba(0, 0, 0, 0.95)',
+            backdropFilter: 'blur(20px)'
           }}
           onClick={closeProject}>
           
-          <div 
-            className={`relative w-full max-w-7xl max-h-[90vh] overflow-y-auto rounded-3xl backdrop-blur-2xl border transition-all duration-500 ${
-              isModalOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-8'
+          <div
+            className={`relative w-full max-w-full sm:max-w-3xl lg:max-w-6xl xl:max-w-7xl max-h-[95vh] overflow-y-auto rounded-2xl sm:rounded-3xl backdrop-blur-2xl border border-white/10 transition-all duration-500 ${
+              isModalOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
             }`}
-            // style={{
-            //   background: isDark 
-            //     ? 'rgba(17, 34, 64, 0.95)' 
-            //     : 'rgba(255, 255, 255, 0.95)',
-            //   borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-            // }}
             onClick={(e) => e.stopPropagation()}>
             
             {/* Close Button */}
             <button
               onClick={closeProject}
-              className="absolute top-6 right-6 z-10 p-3 rounded-full backdrop-blur-xl border transition-all duration-300 hover:scale-110 hover:rotate-90"
-              style={{
-                background: 'rgba(239, 68, 68, 0.2)',
-                borderColor: 'rgba(239, 68, 68, 0.3)'
-              }}>
-              <X className="w-6 h-6 text-red-400" />
+              className="sticky top-4 sm:top-6 float-right mr-4 sm:mr-6 z-50 p-3 rounded-full glass-strong border border-red-500/30 transition-all duration-300 hover:scale-110 hover:rotate-90 hover:bg-red-500/20">
+              <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-400" />
             </button>
 
-            {/* Hero Section */}
-            <div className=" p-8 md:p-12">
+            <div className="p-4 sm:p-6 md:p-8 lg:p-12 clear-both">
+              
+              {/* Project Header */}
               <div className="mb-8">
-                <h2 className={`text-4xl md:text-5xl font-bold mb-4 gradient-text`}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                  <div className="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></div>
+                  <span className="text-sm text-gray-400">{selectedProject.category}</span>
+                </div>
+                
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text">
                   {selectedProject.title}
                 </h2>
-                <p className="text-xl text-teal-400 mb-6 font-medium gradient-text">
+                <p className="text-lg sm:text-xl mb-4 font-medium text-teal-400">
                   {selectedProject.role}
                 </p>
-                <p className={`text-lg mb-8 max-w-3xl text-gray-400 dark:text-white`}>
+                <p className="text-base sm:text-lg mb-8 max-w-3xl text-gray-400 dark:text-white">
                   {selectedProject.description}
                 </p>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-4 mb-12 text-white">
+                {/* Action Links */}
+                {/* <div className="flex flex-wrap gap-3 mb-12">
                   <a
                     href={selectedProject.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center border border-teal-200 gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/50"
-                    // style={{
-                    //   background: 'linear-gradient(135deg, #14b8a6, #d4af37)',
-                    //   color: 'white'
-                    // }}
-                    >
+                    className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl glass-strong border border-teal-500/30 hover:border-teal-500/60 text-white">
                     <ExternalLink className="w-5 h-5" />
                     Live Demo
                   </a>
@@ -398,99 +498,59 @@ const Portfolio = () => {
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-2  border-teal-200 px-6 py-3 rounded-xl font-medium backdrop-blur-xl border transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/50`}
-                    // style={{
-                    //   background: isDark 
-                    //     ? 'rgba(255, 255, 255, 0.1)' 
-                    //     : 'rgba(0, 0, 0, 0.1)',
-                    //   borderColor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)',
-                    //   color: isDark ? 'white' : 'black'
-                    // }}
-                    >
+                    className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl glass-strong border border-white/10 hover:border-white/30 text-white">
                     <Github className="w-5 h-5" />
                     View Code
                   </a>
-                </div>
+                </div> */}
               </div>
 
-              {/* Screen Showcase Section */}
+              {/* Screen Gallery */}
               <div className="mb-8">
-                <h3 className={`text-2xl font-bold mb-6  gradient-text`}>
-                  Application Screens
+                <h3 className="text-2xl font-bold mb-6 gradient-text flex items-center gap-3">
+                  <Monitor className="w-6 h-6" />
+                  Project Screens
                 </h3>
 
-                {/* Device Type Indicators */}
-                <div className="flex items-center justify-center gap-4 mb-8">
+                {/* Screen Type Tabs */}
+                <div className="flex flex-wrap gap-3 mb-8 pb-4 border-b border-white/10">
                   {selectedProject.screens.map((screen, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveScreen(idx)}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-xl border transition-all duration-300 ${
-                        activeScreen === idx ? 'scale-110' : 'hover:scale-105'
+                      className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 ${
+                        activeScreen === idx 
+                          ? 'glass-strong border-2 scale-105' 
+                          : 'glass border border-white/10 hover:border-white/30'
                       }`}
-                    //   style={{
-                    //     background: activeScreen === idx 
-                    //       ? 'linear-gradient(135deg, #14b8a6, #d4af37)'
-                    //       : isDark 
-                    //         ? 'rgba(255, 255, 255, 0.05)' 
-                    //         : 'rgba(0, 0, 0, 0.05)',
-                    //     borderColor: activeScreen === idx 
-                    //       ? 'transparent'
-                    //       : isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-                    //     color: activeScreen === idx ? 'white' : isDark ? '#94a3b8' : '#64748b'
-                    //   }}
-                      >
-                      {screen.type === 'desktop' && <Monitor className="w-4 h-4 text-white" />}
-                      {screen.type === 'mobile' && <Smartphone className="w-4 h-4 text-white" />}
-                      {screen.type === 'tablet' && <Tablet className="w-4 h-4text-white" />}
-                      <span className="text-sm font-medium gradient-text">{screen.name}</span>
+                      style={{
+                        borderColor: activeScreen === idx ? selectedProject.mainColor : undefined,
+                        boxShadow: activeScreen === idx ? `0 0 20px ${selectedProject.mainColor}30` : undefined
+                      }}>
+                      {screen.type === 'desktop' && <Monitor className="w-4 h-4 text-teal-400" />}
+                      {screen.type === 'mobile' && <Smartphone className="w-4 h-4 text-teal-400" />}
+                      {screen.type === 'tablet' && <Tablet className="w-4 h-4 text-teal-400" />}
+                      <span className="text-sm font-medium text-white">{screen.name}</span>
                     </button>
                   ))}
                 </div>
 
-                {/* Screen Display with Device Frames */}
-                <div className="relative flex items-center justify-center min-h-[600px] p-8">
-                  {/* Navigation Buttons */}
-                  {selectedProject.screens.length > 1 && (
-                    <>
-                      <button
-                        onClick={prevScreen}
-                        className="absolute left-4 z-10 p-4 rounded-full text-teal-400 backdrop-blur-xl border transition-all duration-300 hover:scale-110"
-                        // style={{
-                        //   background: isDark 
-                        //     ? 'rgba(255, 255, 255, 0.1)' 
-                        //     : 'rgba(0, 0, 0, 0.1)',
-                        //   borderColor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
-                        // }}
-                        >
-                        <ChevronLeft className={`w-6 h-6 text-gray-400 dark:text-white`} />
-                      </button>
-                      <button
-                        onClick={nextScreen}
-                        className="absolute right-4 z-10 p-4 rounded-full text-teal-400 backdrop-blur-xl border transition-all duration-300 hover:scale-110"
-                        // style={{
-                        //   background: isDark 
-                        //     ? 'rgba(255, 255, 255, 0.1)' 
-                        //     : 'rgba(0, 0, 0, 0.1)',
-                        //   borderColor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
-                        // }}
-                        >
-                        <ChevronRight className={`w-6 h-6 text-gray-400 dark:text-white`} />
-                      </button>
-                    </>
-                  )}
-
-                  {/* Device Frame */}
-                  <div className="transition-all duration-500 hover:scale-105">
-                    {getDeviceFrame(
-                      selectedProject.screens[activeScreen].type,
-                      selectedProject.screens[activeScreen].image
-                    )}
+                {/* Screenshot Display */}
+                <div className="relative rounded-2xl overflow-hidden glass-strong p-8 border border-white/10">
+                  <div className="relative mx-auto" style={{ maxWidth: selectedProject.screens[activeScreen].type === 'mobile' ? '400px' : '100%' }}>
+                    <img 
+                      src={selectedProject.screens[activeScreen].image} 
+                      alt={selectedProject.screens[activeScreen].name}
+                      className="w-full rounded-xl shadow-2xl transition-all duration-500 hover:scale-105"
+                      style={{
+                        boxShadow: `0 20px 60px ${selectedProject.mainColor}30`
+                      }}
+                    />
                   </div>
                 </div>
 
-                {/* Screen Indicator Dots */}
-                <div className="flex justify-center gap-2 mt-8">
+                {/* Progress Dots */}
+                <div className="flex justify-center gap-2 mt-6">
                   {selectedProject.screens.map((_, idx) => (
                     <button
                       key={idx}
@@ -498,13 +558,11 @@ const Portfolio = () => {
                       className={`h-2 rounded-full transition-all duration-300 ${
                         activeScreen === idx ? 'w-8' : 'w-2'
                       }`}
-                    //   style={{
-                    //     background: activeScreen === idx 
-                    //       ? 'linear-gradient(135deg, #14b8a6, #d4af37)'
-                    //       : isDark 
-                    //         ? 'rgba(255, 255, 255, 0.2)' 
-                    //         : 'rgba(0, 0, 0, 0.2)'
-                    //   }}
+                      style={{
+                        background: activeScreen === idx 
+                          ? `linear-gradient(135deg, ${selectedProject.mainColor}, #d4af37)`
+                          : 'rgba(255, 255, 255, 0.2)'
+                      }}
                     />
                   ))}
                 </div>
@@ -512,22 +570,18 @@ const Portfolio = () => {
 
               {/* Tech Stack */}
               <div className="mt-12">
-                <h3 className={`text-xl font-bold mb-4 gradient-text `}>
+                <h3 className="text-xl font-bold mb-4 gradient-text flex items-center gap-2">
+                  <Code2 className="w-5 h-5" />
                   Technologies Used
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {selectedProject.tags.map((tag, i) => (
                     <span 
                       key={i}
-                      className="px-4 py-2 rounded-xl text-sm font-medium backdrop-blur-xl bordertext-gray-400 dark:text-white "
-                    //   style={{
-                    //     background: isDark 
-                    //       ? 'rgba(20, 184, 166, 0.1)' 
-                    //       : 'rgba(20, 184, 166, 0.2)',
-                    //     borderColor: isDark ? 'rgba(20, 184, 166, 0.3)' : 'rgba(20, 184, 166, 0.4)',
-                    //     color: isDark ? '#5eead4' : '#0d9488'
-                    //   }}
-                      >
+                      className="px-4 py-2 rounded-xl glass-strong border border-white/10 text-sm font-medium text-gray-300 hover:scale-105 transition-transform duration-300"
+                      style={{
+                        boxShadow: `0 0 20px ${selectedProject.mainColor}10`
+                      }}>
                       {tag}
                     </span>
                   ))}
@@ -554,12 +608,34 @@ const Portfolio = () => {
           animation: fade-in 0.8s ease-out;
         }
 
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 1; }
+          50% { opacity: .7; }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+
         ::-webkit-scrollbar {
           width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.05);
           border-radius: 4px;
         }
 

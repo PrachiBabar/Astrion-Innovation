@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import CONFIG from "../../../../../constance";
 
 export default function EditBlogPage() {
   const { id } = useParams();
@@ -20,12 +21,13 @@ export default function EditBlogPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // 🔹 Fetch current blog
+  // 🔹 Fetch current blog 
   useEffect(() => {
     const fetchBlog = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/blog/id/${id}`
+          // `http://localhost:5000/api/blog/id/${id}`
+          `${CONFIG.API_BASE_URL}/blog/id/${id}`
         );
         const data = await res.json();
 
@@ -72,7 +74,7 @@ export default function EditBlogPage() {
 }
 
 
-        const res = await fetch(`http://localhost:5000/api/blog/${id}`, {
+        const res = await fetch(`${CONFIG.API_BASE_URL}/blog/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
