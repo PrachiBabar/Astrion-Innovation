@@ -49,7 +49,7 @@ export default function BlogPage() {
   const getImage = (image) => {
     if (!image) return "/placeholder.jpg";
     if (image.startsWith("http")) return image;
-    return `${CONFIG.API_BASE_URL}/uploads/${image.split("/").pop()}`;
+    return `${CONFIG.IMAGE_BASE_URL}/uploads/${image.split("/").pop()}`;
   };
 
   if (loading) {
@@ -129,9 +129,13 @@ export default function BlogPage() {
 
                 <h3 className="text-3xl font-bold mt-4 mb-4">{featuredPost.title}</h3>
 
-                <p className="text-gray-300 mb-6">
+                {/* <p className="text-gray-300 mb-6">
                   {featuredPost.content?.slice(0, 150)}...
-                </p>
+                </p> */}
+                <div
+  className="prose max-w-none text-sm line-clamp-2"
+  dangerouslySetInnerHTML={{ __html: featuredPost.content }}
+/>
 
                 <Link
                   href={`/blogDetail/${featuredPost.slug}`}

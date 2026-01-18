@@ -62,42 +62,92 @@ export default function EditBlogPage() {
   };
 
   // 🔹 Update blog
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     setError("");
 
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-  return setError("Session expired. Please login again.");
-}
-
-
-        const res = await fetch(`${CONFIG.API_BASE_URL}/blog/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(form),
-        });
+//     try {
+//       const token = localStorage.getItem("token");
+//       if (!token) {
+//   return setError("Session expired. Please login again.");
+// }
 
 
-      const data = await res.json();
+//         const res = await fetch(`${CONFIG.API_BASE_URL}/blog/${id}`, {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${token}`,
+//         },
+//         body: JSON.stringify(form),
+//         });
 
-      if (!res.ok) {
-        setError(data.message || "Update failed");
-        return;
-      }
 
-      router.push("/admin/blog/manageblog");
-    } catch (err) {
-      setError("Server error",err);
-    } finally {
-      setLoading(false);
+//       const data = await res.json();
+
+//       if (!res.ok) {
+//         setError(data.message || "Update failed");
+//         return;
+//       }
+
+//       router.push("/admin/blog/manageblog");
+//     } catch (err) {
+//       setError("Server error",err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("Session expired. Please login again.");
+      return;
     }
-  };
+
+    const formData = new FormData();
+    formData.append("title", form.title);
+    formData.append("slug", form.slug);
+    formData.append("author", form.author);
+    formData.append("category", form.category);
+    formData.append("read_time", form.read_time);
+    formData.append("content", form.content);
+
+    // only append image if user selected new one
+    if (form.image instanceof File) {
+      formData.append("image", form.image);
+    }
+
+    const res = await fetch(`${CONFIG.API_BASE_URL}/blog/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.message || "Update failed");
+      return;
+    }
+
+    router.push("/admin/blog/manageblog");
+  } catch (err) {
+    console.error(err);
+    setError("Server error");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleImageChange = (e) => {
   const file = e.target.files[0];

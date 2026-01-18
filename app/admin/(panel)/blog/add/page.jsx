@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CONFIG from "../../../../constance";
-// import Image from "next/image";
+import TipTapEditor from "../../../../components/TipTapEditor";
+
+
 
 export default function AddBlog() {
   const router = useRouter();
@@ -122,12 +124,12 @@ export default function AddBlog() {
           onChange={(e) => setCategory(e.target.value)}
         />
 
-        <textarea
-          placeholder="Content"
-          className="p-3 border rounded h-40"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <div>
+          <label className="block mb-2 font-medium">Content</label>
+          <TipTapEditor content={content} setContent={setContent} />
+        </div>
+
+
 
         <input
           type="text"

@@ -132,7 +132,11 @@ export default function ManageBlogs() {
       <p className="mb-2"><strong>Read Time:</strong> {viewBlog.read_time}</p>
 
       {/* Content */}
-      <p>{viewBlog.content}</p>
+      {/* <p>{viewBlog.content}</p> */}
+      <div
+  className="prose max-w-none line-clamp-3"
+  dangerouslySetInnerHTML={{ __html: viewBlog.content }}
+/>
     </div>
   </div>
 )}

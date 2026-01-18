@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env  PORT=5015 next dev ",
+    "dev": " cross-env PORT=5015 next dev ",
     "build": "next build",
-    "start": "cross-env  PORT=5015 next start",
+    "start": "cross-env PORT=5015 next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^6.3.0",
+    "@tiptap/extension-placeholder": "^3.15.3",
+    "@tiptap/react": "^3.15.3",
+    "@tiptap/starter-kit": "^3.15.3",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.561.0",
     "next": "16.0.10",

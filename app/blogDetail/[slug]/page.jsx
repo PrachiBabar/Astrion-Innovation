@@ -270,7 +270,7 @@ export default function BlogDetailPage() {
   if (img.startsWith("data:image")) return img; // base64
   if (img.startsWith("http")) return img; // external URL
   // local uploads
-  return `${CONFIG.API_BASE_URL}/${img.split("/").pop()}`;
+  return `${CONFIG.IMAGE_BASE_URL}/${img.split("/").pop()}`;
 };
 
 
@@ -322,7 +322,11 @@ export default function BlogDetailPage() {
 
     <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-400 dark:via-white/20 to-transparent mb-8" />
 
-    <article className="prose max-w-none dark:prose-invert text-gray-400">{blog.content}</article>
+    {/* <article className="prose max-w-none dark:prose-invert text-gray-400">{blog.content}</article> */}
+     <div
+        className="prose max-w-none"
+        dangerouslySetInnerHTML={{ __html: blog.content }}
+      />
   </div>
 </div>
 
