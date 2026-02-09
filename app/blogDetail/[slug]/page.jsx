@@ -265,14 +265,28 @@ export default function BlogDetailPage() {
     fetchBlog();
   }, [slug]);
 
-  const getImageUrl = (img) => {
-  if (!img) return "/placeholder.jpg"; // fallback
-  if (img.startsWith("data:image")) return img; // base64
-  if (img.startsWith("http")) return img; // external URL
-  // local uploads
-  return `${CONFIG.IMAGE_BASE_URL}/${img.split("/").pop()}`;
-};
+//   const getImageUrl = (img) => {
+//   if (!img) return "/placeholder.jpg"; // fallback
+//   if (img.startsWith("data:image")) return img; // base64
+//   if (img.startsWith("http")) return img; // external URL
+//   // local uploads
+//   return `${CONFIG.IMAGE_BASE_URL}/${img.split("/").pop()}`;
+// };
 
+const getImageUrl = (img) => {
+  if (!img) return "/placeholder.jpg";
+
+  // already full URL
+  if (img.startsWith("http")) return img;
+
+  // already starts with /uploads
+  if (img.startsWith("/uploads")) {
+    return `${CONFIG.IMAGE_BASE_URL}${img}`;
+  }
+
+  // fallback (just filename)
+  return `${CONFIG.IMAGE_BASE_URL}/uploads/${img}`;
+};
 
   if (loading)
     return (
@@ -289,6 +303,11 @@ export default function BlogDetailPage() {
     );
       // const isBase64 = blog.image?.startsWith("data:image");
 
+      console.log("BLOG OBJECT:", blog);
+console.log("BLOG IMAGE VALUE:", blog.image);
+console.log("FINAL IMAGE URL:", getImageUrl(blog.image));
+
+
   return (
  <div className="glass-strong min-h-screen bg-white dark:bg-[#0b0f19] text-black dark:text-white py-20 px-4">
 
@@ -301,12 +320,26 @@ export default function BlogDetailPage() {
     </Link>
 
     <div className="relative rounded-3xl overflow-hidden mb-10 shadow-2xl">
+      {/* <Image
+        src={getImageUrl(blog.image)}
+        alt={blog.title}
+        width={1200}
+        height={600}
+        className="w-full h-[420px] object-cover"
+        unoptimized
+      /> */}
+
       <img
         src={getImageUrl(blog.image)}
         alt={blog.title}
-        className="w-full h-105 object-cover"
+        className="w-full h-[420px] object-cover"
+        onError={(e) => {
+          e.currentTarget.src = "/placeholder.jpg";
+        }}
       />
+
     </div>
+
 
     <div className="flex flex-wrap gap-6 text-sm text-gray-700 dark:text-gray-400 mb-6">
       <div className="flex items-center gap-2">
