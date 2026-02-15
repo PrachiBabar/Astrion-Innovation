@@ -117,7 +117,7 @@ export default function ManageBlogs() {
       {/* Image */}
       {viewBlog.image && (
         <Image
-          src={`${CONFIG.API_BASE_URL}${viewBlog.image}`}
+          src={`${CONFIG.IMAGE_BASE_URL}${viewBlog.image}`}
           alt={viewBlog.title}
           width={400}
           height={300}

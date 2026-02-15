@@ -366,3 +366,10 @@ console.log("FINAL IMAGE URL:", getImageUrl(blog.image));
 
   );
 }
+
+
+
+
+
+
+
