@@ -20,7 +20,7 @@ export default function ContactUs (){
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <a 
-                        href="https://wa.me/91 9967853969?text=Hello%20let's%20build%20something.%20Let's%20connect!" 
+                        href="https://wa.me/91 8097273854?text=Hello%20let's%20build%20something.%20Let's%20connect!" 
                         target="_blank"
                         className="gradient-bg px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition transform hover:scale-105"
                     >

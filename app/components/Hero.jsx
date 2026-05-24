@@ -80,7 +80,7 @@ export default function Hero() {
                     We build stunning websites, powerful apps, and innovative solutions that drive your business forward.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                 <a href="https://wa.me/919967853969?text=Hello!%20I%20want%20to%20start%20a%20project.%20Let's%20connect!" 
+                 <a href="https://wa.me/918097273854?text=Hello!%20I%20want%20to%20start%20a%20project.%20Let's%20connect!" 
                     target="_blank"
                    onClick={() => {
                     setTimeout(() => {

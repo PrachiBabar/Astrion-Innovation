@@ -43,7 +43,7 @@
                     <li>• Deployment (Vercel / AWS)</li>
                     <li>• Live Full-Stack Project</li>
                 </ul>
-               <a  href="https://wa.me/919967853969?text=I%20am%20interested%20in%20this%20training.%20I%20want%20to%20know%20more%20details."
+               <a  href="https://wa.me/918097273854?text=I%20am%20interested%20in%20this%20training.%20I%20want%20to%20know%20more%20details."
                 target="_blank"
                 className="px-6 py-3 mt-5 rounded-lg gradient-bg text-white font-semibold hover:opacity-90 transition block text-center"
             >
@@ -108,7 +108,7 @@
                     <li>• Design System & Branding</li>
                     <li>• Portfolio & Case Study Building</li>
                 </ul>
-                 <a  href="https://wa.me/919967853969?text=I%20am%20interested%20in%20this%20training.%20I%20want%20to%20know%20more%20details."
+                 <a  href="https://wa.me/918097273854?text=I%20am%20interested%20in%20this%20training.%20I%20want%20to%20know%20more%20details."
                 target="_blank"
                 className="px-6 py-3 mt-5 rounded-lg gradient-bg text-white font-semibold hover:opacity-90 transition block text-center"
             >

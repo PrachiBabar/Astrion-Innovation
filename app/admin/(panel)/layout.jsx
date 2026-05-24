@@ -51,6 +51,13 @@ export default function AdminLayout({ children }) {
           >
             Add Blog
           </Link> */}
+
+           <Link
+            href="/admin/blog/email"
+            className="px-4 py-2 rounded hover:bg-gray-800 transition"
+          >
+            Send Email
+          </Link>
         </nav>
       </aside>
 

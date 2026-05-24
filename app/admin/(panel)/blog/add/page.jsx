@@ -130,7 +130,6 @@ export default function AddBlog() {
         </div>
 
 
-
         <input
           type="text"
           placeholder="Read Time (e.g. 5 min read)"

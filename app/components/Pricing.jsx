@@ -25,15 +25,14 @@ export default function Pricing() {
                         <li>✓ Responsive Design</li>
                         <li>✓ Up to 5 Emails</li>
                         <li>✓ 30 Days Support</li>
-                    </ul>
+                    </ul>   
                     <a  
-                    href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
+                    href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
                     target="_blank" 
                     className="w-full glass-strong px-6 py-3 rounded-lg hover:bg-white/10 transition"
                 >
                     Get Started
                 </a>
-
 
                 </div>
 
@@ -56,7 +55,7 @@ export default function Pricing() {
                         <li>✓ Advanced Features</li>
                         <li>✓ 90 Days Support</li>
                     </ul>
-                    <a  href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!" className="w-full bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    <a  href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!" className="w-full bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
                         Get Started
                     </a>
                 </div>
@@ -78,7 +77,7 @@ export default function Pricing() {
                         <li>✓ 6 Months Support</li>
                     </ul>
                     <a  
-                    href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
+                    href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
                     target="_blank" 
                     className="w-full glass-strong px-6 py-3 rounded-lg hover:bg-white/10 transition"
                 >
@@ -104,7 +103,7 @@ export default function Pricing() {
                         <li>✓ Lifetime Support</li>
                     </ul>
                     <a  
-                    href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
+                    href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
                     target="_blank" 
                     className="w-full glass-strong px-6 py-3 rounded-lg hover:bg-white/10 transition"
                 >
@@ -226,7 +225,7 @@ export default function Pricing() {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <a 
-                        href="https://wa.me/91 9967853969?text=Hello%20let's%20build%20something.%20Let's%20connect!" 
+                        href="https://wa.me/91 8097273854?text=Hello%20let's%20build%20something.%20Let's%20connect!" 
                         target="_blank"
                         className="gradient-bg px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition transform hover:scale-105"
                     >

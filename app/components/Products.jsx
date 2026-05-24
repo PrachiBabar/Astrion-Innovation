@@ -22,7 +22,7 @@ export default function Products() {
                     <p className="text-gray-400 mb-6">Complete online store solution with payment integration</p>
                     <div className="text-3xl font-bold gradient-text mb-6">₹1,00,000</div>
                     <a  
-                    href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
+                    href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
                     target="_blank" 
                     className="w-full glass-strong px-6 py-3 rounded-lg hover:bg-white/10 transition"
                 >
@@ -41,7 +41,7 @@ export default function Products() {
                     <p className="mb-6">Learning management system for online courses</p>
                     <div className="text-3xl font-bold mb-6">₹80,000</div>
                     <a  
-                    href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
+                    href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
                     target="_blank" 
                     className="w-full glass-strong px-6 py-3 rounded-lg hover:bg-white/10 transition"
                 >
@@ -60,7 +60,7 @@ export default function Products() {
                     <p className="text-gray-400 mb-6">Customer relationship management platform</p>
                     <div className="text-3xl font-bold gradient-text mb-6">₹95,000</div>
                     <a  
-                    href="https://wa.me/919967853969?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
+                    href="https://wa.me/918097273854?text=I'd%20like%20to%20build%20a%20project%20with%20you.%20Let's%20connect!"
                     target="_blank" 
                     className="w-full glass-strong px-6 py-3 rounded-lg hover:bg-white/10 transition "
                 >
